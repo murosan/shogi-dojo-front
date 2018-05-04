@@ -1,7 +1,9 @@
 node_modules/
-dist/**/*
 coverage/
-!**/.gitkeep
+dist/**/*
+!dist/css/
+!dist/js/
+!dist/**/.gitkeep
 *.log
 .idea/
 .DS_Store
