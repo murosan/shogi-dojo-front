@@ -1,0 +1,66 @@
+.piece {
+  @include backgr;
+  @include aspect($ratio: 109%);
+}
+
+.pieceSelected {
+  background-color: $colorGreen;
+}
+
+.pieceTurn {
+  &:hover {
+    background-color: rgba($colorGreen, $alpha: 0.8);
+  }
+  &:active {
+    background-color: darken($colorGreen, 10%);
+  }
+}
+
+.pieceConfirm {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: 1fr 1fr;
+  background-color: rgba(white, $alpha: 0.7);
+  div {
+    @include backgr;
+  }
+
+  #btnPromote {
+    background: {
+      size: 38%;
+      image: url($pathImgComponent+'/promote.png');
+    }
+    &:hover {
+      background-color: $colorRed;
+    }
+  }
+
+  #btnNotPromote {
+    background: {
+      size: 75%;
+      image: url($pathImgComponent+'/notpromote.png');
+    }
+    &:hover {
+      background-color: $colorBlue;
+    }
+  }
+}
+
+$pieceNameList: fu, ky, ke, gi, ki, ka, hi, gy, ou, to, ny, nk, ng, ry, um;
+
+@for $i from 0 through 1 {
+  @each $name in $pieceNameList {
+    $picName: $name;
+
+    @if $name == gy {
+      $picName: ou;
+    }
+
+    ##{$name}#{$i} {
+      background-image: url(#{$pathImgPiece}/#{$picName}#{$i}.png);
+    }
+  }
+}
+
+// output example
+// #fu0 { background-image: url('${pathImgPiece}/fu0.png'); }

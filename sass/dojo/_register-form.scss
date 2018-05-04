@@ -1,0 +1,29 @@
+#form-register {
+  // config
+  $max-width: 400px;
+  $min-width: 200px;
+  $input-left-margin: 20px;
+  $form-padding: 2vw;
+
+  $gradi-edge: #879dee;
+  $gradi-top: #17359b;
+  // end
+
+  max-width: $max-width;
+  min-width: $min-width;
+  input {
+    margin-left: $input-left-margin;
+  }
+  width: 100%;
+  margin: $form-padding auto;
+  padding: $form-padding;
+  display: flex;
+  flex-direction: column;
+  button {
+    border: none;
+  }
+  #btn-register {
+    @include btn-register($gradi-edge, $gradi-top);
+    flex: 1;
+  }
+}

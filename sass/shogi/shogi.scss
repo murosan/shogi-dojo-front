@@ -1,0 +1,14 @@
+@import '../modules/paths';
+@import '../modules/colors';
+@import '../modules/util';
+@import '../modules/reset';
+
+@import 'game-area';
+@import 'buttons';
+@import 'board';
+@import 'capture-piece';
+@import 'capture-stage';
+@import 'kif';
+@import 'pieces';
+@import 'player-info';
+@import 'side';

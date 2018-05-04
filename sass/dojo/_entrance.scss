@@ -1,0 +1,16 @@
+.linkDojo {
+  @include dispFlex;
+  @include flexCenter;
+  margin: 20px auto;
+  width: 90%;
+  min-width: 600px;
+  height: 70px;
+  background-color: $colorGray;
+  border-radius: 10px;
+  font-size: 30px;
+  color: darken($colorGray, 50%);
+
+  &:hover {
+    background-color: darken($colorGray, 10%);
+  }
+}

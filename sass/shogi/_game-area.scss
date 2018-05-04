@@ -1,0 +1,14 @@
+.gameArea {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 3fr 1fr;
+  position: relative;
+}
+
+.playArea {
+  @include backgr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 1em;
+  background-image: url($pathImgComponent+'/tatami.jpg');
+}

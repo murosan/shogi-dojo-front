@@ -1,0 +1,88 @@
+@mixin btn($colorBase) {
+  width: 50px;
+  height: 36px;
+  font-size: 85%;
+  border-radius: 3px;
+  outline: 0;
+  &:active {
+    background-color: darken($colorBase, $amount: 20%);
+  }
+}
+
+@mixin button($colorBack: $colorMain, $colorHover: $colorBack) {
+  @include btn($colorBack);
+  color: white;
+  border: none;
+  background-color: $colorBack;
+  &:hover {
+    background-color: $colorHover;
+  }
+  &:active {
+    background-color: lighten($colorBack, $amount: 20%);
+  }
+}
+
+@mixin buttonWhiteBack($fontColor) {
+  @include btn($fontColor);
+  color: $fontColor;
+  border: 1px solid $fontColor;
+  background-color: white;
+  &:hover {
+    background-color: lighten($fontColor, $amount: 50%);
+  }
+  &:active {
+    background-color: lighten($fontColor, $amount: 40%);
+  }
+}
+
+.btnSubmit {
+  @include button(lighten($colorMain, 30%), lighten($colorMain, 15%));
+}
+
+.btnDisable {
+  @include button(darken($colorGray, 20%));
+  pointer-events: none;
+}
+
+.btnNotice {
+  @include buttonWhiteBack(($colorNoticeGreen));
+}
+
+.btnDanger {
+  @include buttonWhiteBack(darken($colorRed, 30%));
+}
+
+.btnApply {
+  @include button($colorMain);
+}
+
+.btnClose {
+  margin: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+
+  &:hover {
+    animation: 50ms largen linear;
+    width: 50px;
+    height: 50px;
+  }
+
+  line {
+    stroke: $colorGray;
+  }
+}
+
+@keyframes largen {
+  0% {
+    width: 40px;
+    height: 40px;
+  }
+  100% {
+    width: 50px;
+    height: 50px;
+  }
+}

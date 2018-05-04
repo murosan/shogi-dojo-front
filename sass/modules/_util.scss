@@ -1,0 +1,87 @@
+@mixin gothic {
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo,
+    メイリオ, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
+@mixin mincho {
+  font-family: 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'HG明朝E',
+    'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
+}
+
+@mixin dispFlex($f: 1) {
+  display: flex;
+  flex: $f 0 0;
+  // 棋譜の下部分が突き抜けないようにすること
+  // ブラウザによって挙動が異なるので注意
+}
+
+@mixin flexCenter {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexBottom {
+  align-self: flex-end;
+  justify-content: center;
+}
+
+@mixin flexLeft {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin aspect($ratio) {
+  &::after {
+    content: '';
+    display: block;
+    padding-top: $ratio;
+  }
+}
+
+@mixin backgr {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@mixin overflow() {
+  overflow: auto;
+  -ms-overflow-style: none;
+  &:-webkit-scrollbar {
+    display: none;
+  }
+}
+
+$breakpoints: (
+  xs: 'only screen and (max-width: 320px)',
+  s: 'only screen and (max-width: 575px)',
+  m: 'only screen and (max-width: 767px)',
+  l: 'only screen and (max-width: 991px)',
+  xl: 'only screen and (max-width: 1199px)'
+);
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  } @else {
+    @error 'key: #{$breakpoint} was not found';
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  @include flexCenter;
+}
+
+// あとで修正
+@mixin btn-register($gradi-edge, $gradi-top) {
+  color: white;
+  border-radius: 5px;
+  font-size: 100%;
+  background: linear-gradient(to top, $gradi-edge, $gradi-top, $gradi-edge);
+}

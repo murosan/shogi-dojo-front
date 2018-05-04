@@ -1,0 +1,23 @@
+.cover {
+  @include dispFlex;
+  @include flexCenter;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 100;
+  animation: 0.25s toTop linear;
+}
+
+@keyframes toTop {
+  0% {
+    top: 1000px;
+  }
+  100% {
+    top: 0;
+  }
+}

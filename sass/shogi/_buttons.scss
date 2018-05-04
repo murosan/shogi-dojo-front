@@ -1,0 +1,39 @@
+@mixin shogiButton {
+  margin: 0;
+  font-size: 1.7vw;
+  border: 1px solid $colorGreen;
+  border-radius: 0.25vw;
+  background-color: white;
+  outline: 0;
+}
+
+.btnArea {
+  flex: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'a b'
+    'c d'
+    'e f'
+    'reverse reverse'
+    'copy copy';
+  margin-top: 0.5vw;
+
+  button {
+    @include shogiButton;
+    &:hover {
+      background-color: rgba($colorGreen, $alpha: 0.75);
+    }
+    &:active {
+      background-color: $colorGreen;
+    }
+  }
+
+  .reverse {
+    grid-area: reverse;
+  }
+  .copy {
+    grid-area: copy;
+  }
+}

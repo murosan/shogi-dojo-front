@@ -1,0 +1,52 @@
+.board {
+  @include backgr;
+  background-image: url($pathImgComponent+'/board.png');
+}
+
+.rowContainer {
+  $borderWidth: 0.2vw;
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 1fr;
+
+  .pieceOnBoard {
+    border: {
+      top: $borderWidth solid;
+      left: $borderWidth solid;
+    }
+  }
+
+  .edgeCorner {
+    @include aspect($ratio: 100%);
+  }
+
+  .edgeText {
+    @include dispFlex;
+    @include flexCenter;
+    height: 100%;
+    font-size: 1vw;
+  }
+
+  .pieceRight {
+    border-right: $borderWidth solid;
+  }
+
+  .pieceBottom {
+    border-bottom: $borderWidth solid;
+  }
+}
+
+.star {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    right: -0.3vw;
+    bottom: -0.3vw;
+    height: 0.5vw;
+    width: 0.5vw;
+    border-radius: 50%;
+    background-color: black;
+  }
+}

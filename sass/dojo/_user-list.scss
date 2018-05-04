@@ -1,0 +1,76 @@
+$dataHeight: 40px;
+
+@mixin listGrid {
+  display: grid;
+  grid-template-columns: 1fr 5.5vw 1fr;
+  width: 100%;
+  height: $dataHeight;
+}
+
+.userList {
+  margin: 30px auto 30px auto;
+  max-width: 600px;
+
+  .btnContainer {
+    @include listGrid;
+    margin-bottom: 10px;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.matchInfo {
+  @include listGrid;
+
+  .player {
+    @include dispFlex;
+    @include flexCenter;
+    border: {
+      style: solid;
+      width: 2px;
+      image: linear-gradient(
+          to left,
+          white 1%,
+          rgba($colorMain, 0.8) 50%,
+          white 100%
+        )
+        0 0 100% 0/0 0 2px 0 stretch;
+    }
+  }
+
+  .vs {
+    @include dispFlex;
+    @include flexCenter;
+    color: $colorGray;
+    text-decoration: underline;
+    text-decoration-color: darken($colorGray, 10%);
+    &::after {
+      content: 'vs';
+    }
+  }
+}
+
+.users {
+  width: 100%;
+
+  .user {
+    height: $dataHeight;
+    display: grid;
+    color: darken($colorGray, 40%);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid $colorGray;
+  }
+
+  .header {
+    margin-top: $dataHeight * 0.5;
+    color: $colorGray;
+    border: none;
+  }
+
+  .data {
+    @include dispFlex;
+    @include flexCenter;
+  }
+}

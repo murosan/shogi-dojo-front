@@ -1,0 +1,22 @@
+.playerInfo {
+  @include dispFlex;
+  @include overflow;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.25vw;
+  border: 0.25vw solid $colorGreen;
+
+  div {
+    @include dispFlex;
+    @include flexCenter;
+    @include overflow;
+  }
+}
+
+.playerInfoRight {
+  margin-bottom: 0.75vw;
+}
+
+.playerInfoLeft {
+  margin-top: 0.75vw;
+}

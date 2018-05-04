@@ -1,0 +1,22 @@
+.side {
+  display: grid;
+  grid-auto-flow: row;
+
+  .container {
+    @include dispFlex;
+    @include overflow;
+    flex-direction: column;
+    margin: {
+      left: 0.25vw;
+      right: 0.25vw;
+    }
+  }
+}
+
+.sideRight {
+  grid-template-rows: 2fr 1fr;
+}
+
+.sideLeft {
+  grid-template-rows: 1fr 2fr;
+}

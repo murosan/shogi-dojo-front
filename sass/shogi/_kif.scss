@@ -1,0 +1,43 @@
+.kifArea {
+  @include dispFlex(3);
+  @include mincho;
+  @include overflow;
+  flex-direction: column;
+  border-radius: 0.25vw;
+  border: 0.25vw solid $colorGreen;
+  background-color: rgba($colorGray, $alpha: 0.7);
+  margin-bottom: 0.5vw;
+  padding-top: 0.5vw;
+}
+
+.kif {
+  white-space: nowrap;
+  span.number {
+    color: darken($colorGray, 27%);
+    margin: {
+      right: 1vw;
+      left: 1vw;
+    }
+  }
+}
+
+.branch {
+  font-size: 90%;
+  color: darken($colorGreen, 20%);
+  white-space: nowrap;
+  span {
+    margin-left: 3vw;
+  }
+}
+
+.kif,
+.branch {
+  &:hover {
+    background-color: rgba(white, $alpha: 0.5);
+  }
+}
+
+#kifCurrent,
+.kifCurrent {
+  background-color: rgba(white, $alpha: 0.5);
+}

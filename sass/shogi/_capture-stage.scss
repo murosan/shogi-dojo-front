@@ -1,0 +1,32 @@
+.captureStage {
+  @include dispFlex;
+  @include backgr;
+  flex-direction: column;
+  border-radius: 0.5vw;
+
+  .row {
+    @include dispFlex;
+    .area {
+      flex: 1;
+      padding-top: 0.1em;
+      position: relative;
+      .pieceCaptured {
+        position: absolute;
+        display: inline-block;
+      }
+    }
+  }
+
+  .rowLeft {
+    flex-direction: row-reverse;
+  }
+}
+
+.captureStageRight {
+  background-image: url($pathImgComponent+'/cap_stand0.png');
+}
+
+.captureStageLeft {
+  flex-direction: column-reverse;
+  background-image: url($pathImgComponent+'/cap_stand1.png');
+}

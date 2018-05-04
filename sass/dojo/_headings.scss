@@ -1,0 +1,32 @@
+@mixin header($fontSize, $height) {
+  @include dispFlex;
+  @include flexCenter;
+  width: 100%;
+  height: $height;
+  margin: 0;
+  position: relative;
+  color: $colorGray;
+  font-size: $fontSize;
+  letter-spacing: 0.5em;
+  background-color: $colorMain;
+
+  a {
+    color: $colorGray;
+  }
+
+  .btnLogin {
+    position: absolute;
+    top: $height / 2 - ($fontSize / 5);
+    right: 2vw;
+    letter-spacing: normal;
+    font-size: $fontSize / 2.5;
+  }
+}
+
+.headerMain {
+  @include header(35px, 70px);
+}
+
+.headerSub {
+  @include header(30px, 50px);
+}
