@@ -1,6 +1,6 @@
 'use strict';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const enabledSourceMap = process.env.ENVIRONMENT === 'production';
+const enabledSourceMap = process.env.NODE_ENV === 'develop';
 
 const tsEntry = {
   entry: {
