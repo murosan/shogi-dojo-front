@@ -1,4 +1,6 @@
 'use strict';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const enabledSourceMap = process.env.ENVIRONMENT === 'production';
 
 const tsEntry = {
   entry: {
@@ -10,7 +12,15 @@ const tsEntry = {
   },
   resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'] },
   module: {
-    rules: [{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' }],
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+        options: {
+          sourceMap: enabledSourceMap,
+        },
+      },
+    ],
   },
 };
 
@@ -27,11 +37,25 @@ const sassEntry = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
-        ],
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
+                sourceMap: enabledSourceMap,
+                importLoaders: 2,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: enabledSourceMap,
+              },
+            },
+          ],
+          fallback: { loader: 'style-loader' },
+        }),
       },
       {
         test: /\.(png|jpg)$/,
@@ -39,6 +63,11 @@ const sassEntry = {
       },
     ],
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].css',
+    }),
+  ],
 };
 
 module.exports = [tsEntry, sassEntry];
